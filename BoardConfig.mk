@@ -243,6 +243,9 @@ TARGET_LD_SHIM_LIBS := \
    /system/lib64/hw/fingerprint.vendor.msm8952.so|fakelogprint.so \
    /system/bin/gx_fpd|fakelogprint.so
 
+# Root Directories
+BOARD_ROOT_EXTRA_FOLDERS := dsp firmware persist
+
 # Telephony
 TARGET_USES_ALTERNATIVE_MANUAL_NETWORK_SELECT := true
 
