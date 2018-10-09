@@ -245,7 +245,6 @@ TARGET_LD_SHIM_LIBS := \
 
 # Root Directories
 BOARD_ROOT_EXTRA_SYMLINKS := \
-    /mnt/vendor/persist:/persist \
     /vendor/dsp:/dsp \
     /vendor/firmware_mnt:/firmware
 
