@@ -86,8 +86,6 @@ on early-boot
     chmod 0664 /sys/class/graphics/fb0/mode
     chown system graphics /sys/class/graphics/fb0/mdp/bw_mode_bitmap
     chmod 0664 /sys/class/graphics/fb0/mdp/bw_mode_bitmap
-    
-    exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
 
 on boot
     # add a cpuset for the camera daemon
@@ -204,8 +202,26 @@ on boot
     # Create vpp directory
     mkdir /persist/vpp 0770 media media
 
-    # Create hvdcp_opti directory
-    mkdir /persist/hvdcp_opti 0770 root system
+    # Update foreground cpuset now that processors are up
+    # reserve CPU 3 for the top app and camera daemon
+    write /dev/cpuset/foreground/cpus 0-2,4-5
+    write /dev/cpuset/background/cpus 0
+    write /dev/cpuset/system-background/cpus 0-2
+    write /dev/cpuset/top-app/cpus 0-5
+    write /dev/cpuset/restricted/cpus 0-3
+
+    # Add a cpuset for the camera daemon
+    # we want all the little cores for camera
+    mkdir /dev/cpuset/camera-daemon
+    chown system system /dev/cpuset/camera-daemon
+    chown system system /dev/cpuset/camera-daemon/tasks
+    chmod 0664 /dev/cpuset/camera-daemon/tasks
+    write /dev/cpuset/camera-daemon/cpus 0-3
+    write /dev/cpuset/camera-daemon/mems 0
+
+on post-fs
+    # Wait qseecomd started
+    wait_for_prop sys.listeners.registered true
 
 # msm specific files that need to be created on /data
 on post-fs-data
@@ -400,8 +416,7 @@ on property:sys.boot_completed=1
     setprop persist.hvdcp.allow_opti 1
 
 on property:vold.decrypt=trigger_restart_framework
-    restart vendor.camera-provider-2-4
-    start vendor.wcnss-service
+    start wcnss-service
 
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
@@ -435,12 +450,60 @@ service vendor.tftp_server /vendor/bin/tftp_server
     user root
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.port-bridge /vendor/bin/port-bridge
+# FM
+on property:hw.fm.init=0
+    write /sys/module/radio_iris_transport/parameters/fmsmd_set 0
+
+on property:hw.fm.init=1
+    write /sys/module/radio_iris_transport/parameters/fmsmd_set 1
+
+service bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
+    class late_start
+    user bluetooth
+    group bluetooth net_bt_admin inet
+    disabled
+    oneshot
+
+service bt-sap /system/bin/sapd 15
+    user bluetooth
+    group bluetooth net_bt_admin
+    class late_start
+    disabled
+    oneshot
+
+service btsnoop /system/bin/btsnoop
+   user bluetooth
+   group bluetooth net_bt_admin sdcard_rw sdcard_r media_rw
+   class late_start
+   disabled
+   oneshot
+
+service bt_logger /system/bin/bt_logger
+   user bluetooth
+   group bluetooth net_bt_admin sdcard_rw sdcard_r media_rw
+   class late_start
+   disabled
+   oneshot
+
+service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
+    class late_start
+    user root
+    group bluetooth net_bt_admin misc diag net_bt
+    disabled
+    oneshot
+
+service port-bridge /system/vendor/bin/port-bridge
     class main
-    user radio
+    user radio system
     group radio system inet
     disabled
     oneshot
+
+service qmiproxy /system/bin/qmiproxy
+    class main
+    user radio
+    group radio diag
+    disabled
 
 # QMUX must be in multiple groups to support external process connections
 service vendor.qmuxd /vendor/bin/qmuxd
@@ -578,8 +641,14 @@ service vendor.msm_irqbal_lb /vendor/bin/msm_irqbalance -f /system/vendor/etc/ms
     disabled
     writepid /dev/cpuset/system-background/tasks
 
+on charger
+    setprop persist.sys.usb.config mass_storage
+    load_system_props
+    start qcom-post-boot
+
 on property:init.svc.surfaceflinger=restarting
-    restart vendor.hwcomposer-2-1
+    stop vendor.hwcomposer-2-1
+    start vendor.hwcomposer-2-1
 
 service vendor.time_daemon /system/vendor/bin/time_daemon
     class main

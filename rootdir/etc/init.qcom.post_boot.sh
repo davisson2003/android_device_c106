@@ -40,7 +40,20 @@ echo 50 > /sys/module/process_reclaim/parameters/pressure_min
 echo 30 > /sys/module/process_reclaim/parameters/swap_opt_eff
 echo 1024 > /sys/module/process_reclaim/parameters/per_swap_size
 echo 0 > /sys/module/vmpressure/parameters/allocstall_threshold
-echo 60 > /proc/sys/vm/swappiness
+echo 100 > /proc/sys/vm/swappiness
+
+minfree_series=`cat /sys/module/lowmemorykiller/parameters/minfree`
+minfree_1="${minfree_series#*,}" ; rem_minfree_1="${minfree_1%%,*}"
+minfree_2="${minfree_1#*,}" ; rem_minfree_2="${minfree_2%%,*}"
+minfree_3="${minfree_2#*,}" ; rem_minfree_3="${minfree_3%%,*}"
+minfree_4="${minfree_3#*,}" ; rem_minfree_4="${minfree_4%%,*}"
+minfree_5="${minfree_4#*,}"
+vmpres_file_min=$((minfree_5 + (minfree_5 - rem_minfree_4)))
+echo $vmpres_file_min > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
+echo 0 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
+
+setprop sys.post_boot.parsed 1
+setprop vendor.post_boot.parsed 1
 
 panel=`cat /sys/class/graphics/fb0/modes`
 if [ "${panel:5:1}" == "x" ]; then
