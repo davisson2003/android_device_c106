@@ -20,6 +20,9 @@ $(call inherit-product, device/coolpad/c106/full_c106.mk)
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := c106
 PRODUCT_NAME := lineage_c106
