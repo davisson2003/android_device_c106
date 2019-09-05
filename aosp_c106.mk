@@ -20,6 +20,9 @@ $(call inherit-product, device/coolpad/c106/full_c106.mk)
 # Inherit some common LineageOS stuff.
 #$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
+# Installs gsi keys into ramdisk, to boot a GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := c106
 PRODUCT_NAME := aosp_c106
