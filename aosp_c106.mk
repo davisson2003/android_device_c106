@@ -23,6 +23,9 @@ $(call inherit-product, device/coolpad/c106/full_c106.mk)
 # Inherit some common AOSP stuff.
 $(call inherit-product, vendor/aosp/common.mk)
 
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := c106
 PRODUCT_NAME := aosp_c106
