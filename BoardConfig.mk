@@ -155,7 +155,7 @@ ifeq ($(HOST_OS),linux)
     WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
   endif
 endif
-PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
+#PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
 
 # Camera
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
@@ -263,7 +263,7 @@ TARGET_USES_OLD_MNC_FORMAT := true
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Sepolicy
-include device/qcom/sepolicy-legacy/sepolicy.mk
+#include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Shims
