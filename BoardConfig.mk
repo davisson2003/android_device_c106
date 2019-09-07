@@ -251,7 +251,6 @@ TARGET_USES_INTERACTION_BOOST := true
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Qualcomm support
-BOARD_USES_QCOM_HARDWARE := true
 TARGET_USE_SDCLANG := true
 
 # Render
