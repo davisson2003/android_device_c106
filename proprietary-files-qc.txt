@@ -191,6 +191,7 @@ vendor/lib64/librpmb.so
 vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libssd.so
+vendor/lib64/mediadrm/libwvdrmengine.so
 
 # DRM - Qualcomm Trusted Execution Enviornment
 lib/vendor.qti.hardware.qteeconnector@1.0.so
@@ -612,8 +613,8 @@ vendor/bin/time_daemon|5ba8f7261ce833acc77c4619b497ccbf7ea09b4c
 vendor/lib/libtime_genoff.so|24f6064818bc53c5ea17a3608766e3cc1e889f64
 vendor/lib64/libtime_genoff.so|8f4c1f9ace6af463b241b130d6872b5d39cc7b2a
 
-# Widevine DRM - from Mi A2 Lite daisy_sprout 9 PKQ1.180917.001/V10.0.3.0.PDLMIXM release-keys
-vendor/bin/hw/android.hardware.drm@1.1-service.widevine|9743c4ecd0fb8773795bcbfbb406f25616c04129
+# DRM (Widevine) - from mata QP1A.190711.107
+vendor/bin/hw/android.hardware.drm@1.2-service.widevine|5c2f83943a1c8680cde657e22425f665ab438714
 vendor/bin/move_widevine_data.sh|ef619bc7798f9e3101888d73b7dda4877d69fb46
-vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc|458dd241f5f8536eccb57f012b3eba0061736e8e
-vendor/lib64/libwvhidl.so|a3444ac0deb8144a08ba2ed1dad2f2369096c7af
+vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc|e3cb732c0bd519988100675edf385d947abf5f6c
+vendor/lib64/libwvhidl.so|ff967a2aab27d75eb858c6a7a269d4090af9f377
