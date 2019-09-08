@@ -236,7 +236,8 @@ TARGET_LD_SHIM_LIBS := \
    /system/lib64/hw/fingerprint.vendor.msm8952.so|fakelogprint.so \
    /system/bin/gx_fpd|fakelogprint.so
 
-# Root Directories
+# Root Directories & Symlinks
+BOARD_ROOT_EXTRA_FOLDERS := persist
 BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/dsp:/dsp \
     /vendor/firmware_mnt:/firmware
