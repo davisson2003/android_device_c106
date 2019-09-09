@@ -24,10 +24,13 @@ $(call inherit-product, vendor/coolpad/c106/c106-vendor.mk)
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-#    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay-aosp
 
 PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
+
+#Dex
+PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
 
 # Screen density
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
@@ -322,11 +325,6 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libstagefrighthw
 
-# Perf
-PRODUCT_BOOT_JARS += \
-    QPerformance \
-    UxPerformance
-
 # Perf configuration files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/perf/commonresourceconfigs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/commonresourceconfigs.xml \
@@ -353,13 +351,13 @@ PRODUCT_PACKAGES += \
     libxml2
 
 # Ramdisk
-PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES_ENG += \
     fstab.qcom \
     init.qcom.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh
 
-PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES_ENG += \
     init.qcom.rc \
     init.target.rc \
     init.s2.usb.rc \
