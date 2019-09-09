@@ -14,4 +14,7 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_c106.mk
+    $(LOCAL_DIR)/cos_c106.mk
+
+COMMON_LUNCH_CHOICES := \
+    cos_c106-userdebug
