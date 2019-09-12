@@ -29,6 +29,11 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
 
+# Use Prebuilt Kernel
+TARGET_PREBUILT_KERNEL := device/coolpad/c106/kernel/Image.gz-dtb
+PRODUCT_COPY_FILES += \
+	$(TARGET_PREBUILT_KERNEL):kernel
+
 #Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
 
