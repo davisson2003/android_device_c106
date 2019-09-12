@@ -17,8 +17,8 @@
 # Inherit device configuration
 $(call inherit-product, device/coolpad/c106/full_c106.mk)
 
-# Inherit some common COS stuff.
-$(call inherit-product, vendor/cos/config/common_full_phone.mk)
+# Inherit some common ArrowOS stuff.
+$(call inherit-product, vendor/arrow/config/common.mk)
 
 # Installs gsi keys into ramdisk, to boot a GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
@@ -28,7 +28,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := c106
-PRODUCT_NAME := cos_c106
+PRODUCT_NAME := arrow_c106
 PRODUCT_BRAND := LeEco
 PRODUCT_MANUFACTURER := LeMobile
 
