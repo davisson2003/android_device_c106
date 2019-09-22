@@ -19,7 +19,7 @@
 
 #include <string.h>
 
-#define BTM_DEF_LOCAL_NAME "LeEco Le 2"
+#define BTM_DEF_LOCAL_NAME "CoolPad C106"
 
 #define BT_CLEAN_TURN_ON_DISABLED 1
 
