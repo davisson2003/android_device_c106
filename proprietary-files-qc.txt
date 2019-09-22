@@ -19,6 +19,17 @@ vendor/lib/rfsa/adsp/libexternal_dog_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp.so
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
 
+# FIX camera
+vendor/lib/hw/camera.msm8952.so
+
+# ANT+
+lib/com.qualcomm.qti.ant@1.0.so
+-lib/libantradio.so
+lib64/com.qualcomm.qti.ant@1.0.so
+-lib64/libantradio.so
+vendor/lib64/com.qualcomm.qti.ant@1.0_vendor.so
+vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
+
 # Audio libraries
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
@@ -63,12 +74,7 @@ vendor/lib64/libbtnv.so|136dc47f7d16a841e9c6ad909753e96a41392534
 
 # Bluetooth ( dependencies ) - from Mi A2 Lite daisy_sprout 9 PKQ1.180917.001/V10.0.3.0.PDLMIXM release-keys
 vendor/lib/vendor.qti.hardware.fm@1.0.so|3c725ea0f85bf709bcf77761d707abf7660b1c4d
-vendor/lib64/com.qualcomm.qti.ant@1.0.so|3a19c81d66ef1190d0b2f361420d5cbf707cc600
 vendor/lib64/vendor.qti.hardware.fm@1.0.so|dc576dfcb0bf390a106b5ed8861e7f547110cbf1
-
-# Bluetooth - aptX - from mata-user 9 PPR1.181005.099 413 release-keys
-lib64/libaptX_encoder.so|0cebad28afcf29f931bdc2d24fce2730dc882ecf
-lib64/libaptXHD_encoder.so|90f47f10af28b3ead143200cb4370b847c513127
 
 # Charger
 vendor/bin/hvdcp_opti
@@ -97,7 +103,7 @@ framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar|8ef6455540e94b25357d
 framework/vendor.qti.hardware.data.latency-V1.0-java.jar|319c79ec3b8dffc73d19d1a515936c20762e42e0
 framework/vendor.qti.hardware.data.qmi-V1.0-java.jar|94c3e0efe3bc51358fe9145ed1ff0708c262380d
 framework/vendor.qti.latency-V2.0-java.jar|9d4912be5c77d8c9683b3a81901dcc644adb8ea7
--priv-app/CNEService/CNEService.apk|d8579ab4633111f5473b3be8c9da487504908167
+-priv-app/CNEService/CNEService.apk|4c6ee655fcdda500f4999ca9b3e1c028af2c8a71
 vendor/bin/cnd|81c0f2beecb6f375b4d460adbfb739b8aa970a70
 vendor/etc/cne/wqeclient/ATT/ATT_profile1.xml|578f3f8f56059bfdbef926bcc68d01c15e06951f
 vendor/etc/cne/wqeclient/ATT/ATT_profile2.xml|1fb42c672a12b6660bdce3ea94e0c43719dd9de8
@@ -149,25 +155,25 @@ vendor/lib64/vendor.qti.ims.rcsconfig@1.0.so|cbc75b554051298020506d85427a1aa7034
 vendor/lib64/vendor.qti.latency@2.0.so|15e50ce40e210993343406947dd2c959920f40c8
 
 # DPM - from Mi A2 Lite daisy_sprout 9 PKQ1.180917.001/V10.0.3.0.PDLMIXM release-keys
-#bin/dpmd|1b38829a7faf33d5cbdc195d703f99384c20c9f4
-#etc/dpm/dpm.conf|5f19d3984b5291ac956552bda2a84c10c535df0a
-#etc/init/dpmd.rc|52ca6ad920a1804e4ff608113cece063730f5e0c
-#etc/permissions/com.qti.dpmframework.xml|36b94c9338069e434b83359a92cdc7ff62b822df
-#etc/permissions/dpmapi.xml|ded29f9befaef20a7ccee0c75427fda1d1d04890
-#framework/com.qti.dpmframework.jar|2a6ff555ebff148a508fc7ea2fbeaee4b9a2dff6
-#framework/dpmapi.jar|66a30e2752b058f6f522721ef6b5efb4c747f7ed
-#framework/tcmclient.jar|5f3878f0fe312a429d3a69a2119b34100818292e
-#lib/com.qualcomm.qti.dpm.api@1.0.so|658b574dc31f2f7f87e52c75c9564d59bed8873f
-#lib/libdpmctmgr.so|1be276d0b3b2f3d2a858edde1e6bf197399a037e
-#lib/libdpmfdmgr.so|4e22f8a028a915711f4e03bcf43ae4d514b56993
-#lib/libdpmframework.so|9e52a99f2be9418e91b504d147960c4851741f53
-#lib/libdpmtcm.so|c48c747670ad1495733dd67c68aa5859c89db654
-#lib64/com.qualcomm.qti.dpm.api@1.0.so|2af88934e4039edaac842576a1861cbdfe39838b
-#lib64/libdpmctmgr.so|595449eff197e8c3bc6f7a4f0242188abe82418f
-#lib64/libdpmfdmgr.so|f03869f7bee601182c545e892523d23529439e16
-#lib64/libdpmframework.so|9dc137606c1cb73e3ec5a97c954df93e750dd459
-#lib64/libdpmtcm.so|1f85ced85f541146756df0b4597a4c51300be63a
-#-priv-app/dpmserviceapp/dpmserviceapp.apk|a642336052f3e5d70580700e2aebba230a5f663f
+bin/dpmd|1b38829a7faf33d5cbdc195d703f99384c20c9f4
+etc/dpm/dpm.conf|5f19d3984b5291ac956552bda2a84c10c535df0a
+etc/init/dpmd.rc|52ca6ad920a1804e4ff608113cece063730f5e0c
+etc/permissions/com.qti.dpmframework.xml|36b94c9338069e434b83359a92cdc7ff62b822df
+etc/permissions/dpmapi.xml|ded29f9befaef20a7ccee0c75427fda1d1d04890
+framework/com.qti.dpmframework.jar|2a6ff555ebff148a508fc7ea2fbeaee4b9a2dff6
+framework/dpmapi.jar|66a30e2752b058f6f522721ef6b5efb4c747f7ed
+framework/tcmclient.jar|5f3878f0fe312a429d3a69a2119b34100818292e
+lib/com.qualcomm.qti.dpm.api@1.0.so|658b574dc31f2f7f87e52c75c9564d59bed8873f
+lib/libdpmctmgr.so|1be276d0b3b2f3d2a858edde1e6bf197399a037e
+lib/libdpmfdmgr.so|4e22f8a028a915711f4e03bcf43ae4d514b56993
+lib/libdpmframework.so|9e52a99f2be9418e91b504d147960c4851741f53
+lib/libdpmtcm.so|c48c747670ad1495733dd67c68aa5859c89db654
+lib64/com.qualcomm.qti.dpm.api@1.0.so|2af88934e4039edaac842576a1861cbdfe39838b
+lib64/libdpmctmgr.so|595449eff197e8c3bc6f7a4f0242188abe82418f
+lib64/libdpmfdmgr.so|f03869f7bee601182c545e892523d23529439e16
+lib64/libdpmframework.so|9dc137606c1cb73e3ec5a97c954df93e750dd459
+lib64/libdpmtcm.so|1f85ced85f541146756df0b4597a4c51300be63a
+-priv-app/dpmserviceapp/dpmserviceapp.apk|a642336052f3e5d70580700e2aebba230a5f663f
 vendor/bin/dpmQmiMgr|31e019a02d25a959a2edfe2c9a04ab958562bb67
 vendor/lib/libdpmqmihal.so|150b719f2a33ed70cd50e5f6d6ccad8ea3c34eea
 vendor/lib/com.qualcomm.qti.dpm.api@1.0.so|658b574dc31f2f7f87e52c75c9564d59bed8873f
@@ -191,7 +197,6 @@ vendor/lib64/librpmb.so
 vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libssd.so
-vendor/lib64/mediadrm/libwvdrmengine.so
 
 # DRM - Qualcomm Trusted Execution Enviornment
 lib/vendor.qti.hardware.qteeconnector@1.0.so
@@ -202,9 +207,6 @@ vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
 vendor/lib/vendor.qti.hardware.qteeconnector@1.0_vendor.so
 vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0_vendor.so
-
-# Energy awareness - from smartron (smartron-rimo02a-8.0.0-T5524INDURC-475)
-vendor/bin/energy-awareness|8ec3f96a118c37a2dda0d70122ff075861641ccc
 
 # Gatekeeper
 vendor/lib64/hw/gatekeeper.msm8952.so
@@ -613,8 +615,8 @@ vendor/bin/time_daemon|5ba8f7261ce833acc77c4619b497ccbf7ea09b4c
 vendor/lib/libtime_genoff.so|24f6064818bc53c5ea17a3608766e3cc1e889f64
 vendor/lib64/libtime_genoff.so|8f4c1f9ace6af463b241b130d6872b5d39cc7b2a
 
-# DRM (Widevine) - from mata QP1A.190711.107
-vendor/bin/hw/android.hardware.drm@1.2-service.widevine|5c2f83943a1c8680cde657e22425f665ab438714
+# Widevine DRM - from Mi A2 Lite daisy_sprout 9 PKQ1.180917.001/V10.0.3.0.PDLMIXM release-keys
+vendor/bin/hw/android.hardware.drm@1.1-service.widevine|9743c4ecd0fb8773795bcbfbb406f25616c04129
 vendor/bin/move_widevine_data.sh|ef619bc7798f9e3101888d73b7dda4877d69fb46
-vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc|e3cb732c0bd519988100675edf385d947abf5f6c
-vendor/lib64/libwvhidl.so|ff967a2aab27d75eb858c6a7a269d4090af9f377
+vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc|458dd241f5f8536eccb57f012b3eba0061736e8e
+vendor/lib64/libwvhidl.so|a3444ac0deb8144a08ba2ed1dad2f2369096c7af

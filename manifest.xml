@@ -60,12 +60,21 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.camera.provider</name>
-        <transport>hwbinder</transport>
+        <transport arch="32+64">passthrough</transport>
         <version>2.4</version>
         <interface>
             <name>ICameraProvider</name>
             <instance>external/0</instance>
             <instance>legacy/0</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.cas</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IMediaCasService</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -85,11 +94,13 @@
             <name>ICryptoFactory</name>
             <instance>clearkey</instance>
             <instance>default</instance>
+            <instance>widevine</instance>
         </interface>
         <interface>
             <name>IDrmFactory</name>
             <instance>clearkey</instance>
             <instance>default</instance>
+            <instance>widevine</instance>
         </interface>
         <fqname>@1.2::ICryptoFactory/clearkey</fqname>
         <fqname>@1.2::IDrmFactory/clearkey</fqname>
@@ -112,6 +123,7 @@
         <interface>
             <name>IGnss</name>
             <instance>default</instance>
+            <instance>gnss_vendor</instance>
         </interface>
         <fqname>@1.0::IGnss/default</fqname>
         <fqname>@1.0::IGnss/gnss_vendor</fqname>
@@ -127,7 +139,7 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.graphics.composer</name>
-        <transport>hwbinder</transport>
+        <transport arch="32+64">passthrough</transport>
         <version>2.1</version>
         <interface>
             <name>IComposer</name>
@@ -149,6 +161,7 @@
         <version>2.0</version>
         <interface>
             <name>IHealth</name>
+            <instance>backup</instance>
             <instance>default</instance>
         </interface>
     </hal>
@@ -221,6 +234,16 @@
         </interface>
         <interface>
             <name>ISap</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.radio.deprecated</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IOemHook</name>
             <instance>slot1</instance>
             <instance>slot2</instance>
         </interface>
@@ -367,6 +390,42 @@
         <interface>
             <name>IUceService</name>
             <instance>com.qualcomm.qti.uceservice</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.lineage.livedisplay</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IColor</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.lineage.power</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ILineagePower</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.lineage.touch</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IKeyDisabler</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.lineage.trust</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IUsbRestrict</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl">
