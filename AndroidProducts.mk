@@ -14,7 +14,7 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/arrow_c106.mk
+    $(LOCAL_DIR)/aosp_c106.mk
 
 COMMON_LUNCH_CHOICES := \
-    arrow_c106-userdebug
+	aosp_c106-userdebug
