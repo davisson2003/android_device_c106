@@ -17,7 +17,7 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#include <cutils/properties.h>
+//#include <cutils/properties.h>
 #include <string.h>
 
 #define BTM_DEF_LOCAL_NAME "CoolPad C106"
@@ -41,5 +41,5 @@
 
 /* Enable HFP WBS feature */
 #define BTIF_HF_CLIENT_WBS_INCLUDED TRUE
-#undef PROPERTY_VALUE_MAX
+//#undef PROPERTY_VALUE_MAX
 #endif
