@@ -42,3 +42,6 @@ PRODUCT_SYSTEM_PROPERTY_BLACKLIST += ro.product.model
 
 # Release name
 PRODUCT_RELEASE_NAME := c106
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.build.fingerprint=$(BUILD_FINGERPRINT)
