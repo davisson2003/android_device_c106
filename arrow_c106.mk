@@ -20,15 +20,15 @@ TARGET_BOOT_ANIMATION_RES := 1080
 # Inherit device configuration
 $(call inherit-product, device/coolpad/c106/full_c106.mk)
 
-# Inherit some common AOSP stuff.
-$(call inherit-product, vendor/aosp/common.mk)
+# Inherit some common ArrowOS stuff.
+$(call inherit-product, vendor/arrow/config/common.mk)
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := c106
-PRODUCT_NAME := aosp_c106
+PRODUCT_NAME := arrow_c106
 PRODUCT_BRAND := LeEco
 PRODUCT_MANUFACTURER := LeMobile
 
