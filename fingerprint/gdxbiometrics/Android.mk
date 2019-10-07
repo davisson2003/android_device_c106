@@ -9,7 +9,6 @@ LOCAL_SRC_FILES := \
     BiometricsFingerprint.cpp \
     service.cpp \
     fingerprintd/FingerprintDaemonCallbackProxy.cpp \
-    fingerprintd/FingerprintDaemonProxy.cpp \
     fingerprintd/IFingerprintDaemonCallback.cpp \
     fingerprintd/IFingerprintDaemon.cpp \
     fingerprintd/wrapper.cpp
