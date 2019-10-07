@@ -320,9 +320,9 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 # Perf
-PRODUCT_BOOT_JARS += \
-    QPerformance \
-    UxPerformance
+# PRODUCT_BOOT_JARS += \
+#    QPerformance \
+#    UxPerformance
 
 # Perf configuration files
 PRODUCT_COPY_FILES += \
@@ -395,7 +395,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     telephony-ext
 
-PRODUCT_BOOT_JARS += \
+#PRODUCT_BOOT_JARS +=\
     telephony-ext
 
 # TextClassifier smart selection model files
