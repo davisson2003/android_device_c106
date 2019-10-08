@@ -14,4 +14,10 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_c106.mk
+    $(LOCAL_DIR)/rr_c106.mk
+
+COMMON_LUNCH_CHOICES += \
+	rr_c106-eng \
+	rr_c106-userdebug \
+	rr_106-user 
+
